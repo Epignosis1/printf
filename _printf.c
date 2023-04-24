@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 				num++;
 				break;
 			case 's':
-				num += printf("%s", va_arg(args, char *));
+				num += string_print(va_arg(args, char *));
 				break;
 			case '%':
 				putchar('%');
@@ -51,4 +51,19 @@ int _printf(const char *format, ...)
 	return (num);
 }
 
+int string_print(char *str)
+{
+    int num = 0;
 
+    if (str == NULL)
+        str = "(null)";
+
+    while (*str)
+    {
+        putchar(*str);
+        num++;
+        str++;
+    }
+
+    return (num);
+}
