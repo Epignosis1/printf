@@ -1,36 +1,48 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include "main.h"
+#include<stdio.h>
+/**
+  * _printf - function that produces output according to a format
+  * calls the corresponding function.
+  * @format: format (char, string, int, decimal)
+  * Return: NULL or function associated ;
+  */
 
-int _printf(const char *format, ...) {
-    va_list args;
-    int count = 0;
-    char c;
+int _printf(const char *format, ...)
+{
+	va_list args;
+	int num = 0;
+	char a;
 
-    va_start(args, format);
+	va_start(args, format);
 
-    while ((c = *format++)) {
-        if (c == '%') {
-            switch (*format++) {
-                case 'c':
-                    putchar(va_arg(args, int));
-                    count++;
-                    break;
-                case 's':
-                    count += printf("%s", va_arg(args, char *));
-                    break;
-                case '%':
-                    putchar('%');
-                    count++;
-                    break;
-            }
-        } else {
-            putchar(c);
-            count++;
-        }
-    }
-
-    va_end(args);
-
-    return count;
+	while ((a = *format++))
+	{
+		if (a == '%')
+		{
+			switch (*format++)
+			{
+				case 'c':
+					putchar(va_arg(args, int));
+					num++;
+					break;
+				case 's':
+					num += printf("%s", va_arg(args, char *));
+					break;
+				case '%':
+					putchar('%');
+					num++;
+					break;
+			}
+		}
+		else
+		{
+			putchar(a);
+			num++;
+		}
+	}
+	va_end(args);
+	return (num);
 }
+
+
