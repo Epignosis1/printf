@@ -6,9 +6,9 @@
  */
 int printf_int(va_list args)
 {
-int len, powten, j, digit, n, count = 0, num;
+int len, powten, k, digit, n, count = 0, num;
 
-	n = va_arg(i, int);
+	n = va_arg(args, int);
 	if (n != 0)
 	{
 		if (n < 0)
@@ -24,9 +24,9 @@ int len, powten, j, digit, n, count = 0, num;
 			len++;
 		}
 		powten = 1;
-		for (j = 1; j <= len - 1; j++)
+		for (k = 1; k <= len - 1; k++)
 			powten *= 10;
-		for (j = 1; j <= len; j++)
+		for (k = 1; k <= len; k++)
 		{
 			digit = n / powten;
 			if (n < 0)
