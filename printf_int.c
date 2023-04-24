@@ -6,20 +6,20 @@
  */
 int printf_int(va_list args)
 {
-	int n = va_arg(args, int);
-	int num, last = n % 10, digit, exp = 1;
-	int  i = 1;
+	int p  = va_arg(args, int);
+	int num, last = p % 10, digit, exp = 1;
+	int  j = 1;
 
-	n = n / 10;
-	num = n;
+	p = p / 10;
+	num = p;
 
 	if (last < 0)
 	{
 		_putchar('-');
 		num = -num;
-		n = -n;
+		p = -p;
 		last = -last;
-		i++;
+		j++;
 	}
 	if (num > 0)
 	{
@@ -28,19 +28,19 @@ int printf_int(va_list args)
 			exp = exp * 10;
 			num = num / 10;
 		}
-		num = n;
+		num = p;
 		while (exp > 0)
 		{
 			digit = num / exp;
 			_putchar(digit + '0');
 			num = num - (digit * exp);
 			exp = exp / 10;
-			i++;
+			j++;
 		}
 	}
 	_putchar(last + '0');
 
-	return (i);
+	return (j);
 }
 /**
  * printf_dec - prints the decimals
@@ -49,21 +49,21 @@ int printf_int(va_list args)
  */
 int printf_dec(va_list args)
 {
-	int n = va_arg(args, int);
-	int num, last = n % 10, digit;
-	int  i = 1;
+	int p = va_arg(args, int);
+	int num, last = p % 10, digit;
+	int  j = 1;
 	int exp = 1;
 
-	n = n / 10;
-	num = n;
+	p = p / 10;
+	num = p;
 
 	if (last < 0)
 	{
 		_putchar('-');
 		num = -num;
-		n = -n;
+		p = -p;
 		last = -last;
-		i++;
+		j++;
 	}
 	if (num > 0)
 	{
@@ -72,17 +72,17 @@ int printf_dec(va_list args)
 			exp = exp * 10;
 			num = num / 10;
 		}
-		num = n;
+		num = p;
 		while (exp > 0)
 		{
 			digit = num / exp;
 			_putchar(digit + '0');
 			num = num - (digit * exp);
 			exp = exp / 10;
-			i++;
+			j++;
 		}
 	}
 	_putchar(last + '0');
 
-	return (i);
+	return (j);
 }
