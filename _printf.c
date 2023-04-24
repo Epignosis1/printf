@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 				num++;
 				break;
 			case 's':
-				num += printf("%s",va_arg(args, char *));
+				num += printf("%s", va_arg(args, char *));
 				break;
 			case '%':
 				putchar('%');
@@ -48,5 +48,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
-	return (num;)
+	return (num)
 }
