@@ -6,83 +6,42 @@
  */
 int printf_int(va_list args)
 {
-	int p  = va_arg(args, int);
-	int num, last = p % 10, digit, exp = 1;
-	int  j = 1;
+int len, powten, j, digit, n, count = 0, num;
 
-	p = p / 10;
-	num = p;
-
-	if (last < 0)
+	n = va_arg(i, int);
+	if (n != 0)
 	{
-		_putchar('-');
-		num = -num;
-		p = -p;
-		last = -last;
-		j++;
-	}
-	if (num > 0)
-	{
-		while (num / 10 != 0)
+		if (n < 0)
 		{
-			exp = exp * 10;
-			num = num / 10;
+			_putchar('-');
+			count++;
 		}
-		num = p;
-		while (exp > 0)
+		num = n;
+		len = 0;
+		while (num != 0)
 		{
-			digit = num / exp;
-			_putchar(digit + '0');
-			num = num - (digit * exp);
-			exp = exp / 10;
-			j++;
+			num /= 10;
+			len++;
 		}
-	}
-	_putchar(last + '0');
-
-	return (j);
-}
-/**
- * printf_dec - prints the decimals
- * @args: argument to be printed
- * Return: the number of characters to be printed
- */
-int printf_dec(va_list args)
-{
-	int p = va_arg(args, int);
-	int num, last = p % 10, digit;
-	int  j = 1;
-	int exp = 1;
-
-	p = p / 10;
-	num = p;
-
-	if (last < 0)
-	{
-		_putchar('-');
-		num = -num;
-		p = -p;
-		last = -last;
-		j++;
-	}
-	if (num > 0)
-	{
-		while (num / 10 != 0)
+		powten = 1;
+		for (j = 1; j <= len - 1; j++)
+			powten *= 10;
+		for (j = 1; j <= len; j++)
 		{
-			exp = exp * 10;
-			num = num / 10;
-		}
-		num = p;
-		while (exp > 0)
-		{
-			digit = num / exp;
-			_putchar(digit + '0');
-			num = num - (digit * exp);
-			exp = exp / 10;
-			j++;
+			digit = n / powten;
+			if (n < 0)
+				_putchar((digit * -1) + 48);
+			else
+				_putchar(digit + '0');
+			count++;
+			n -= digit * powten;
+			powten /= 10;
 		}
 	}
-	_putchar(last + '0');
-
-	return (j);
+	else
+	{
+		_putchar('0');
+		return (1);
+	}
+	return (count);
 }
